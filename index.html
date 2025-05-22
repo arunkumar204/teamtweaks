@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team Tweaks</title>
+  <link rel="icon" type="image/png" href="logos/logo.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: linear-gradient(to bottom, #000212, #001140);
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: transparent;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links li {
+      cursor: pointer;
+    }
+
+    .contact-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      min-height: 90vh;
+    }
+
+    .cta-buttons {
+      margin: 40px 0;
+    }
+
+    .quote-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      margin-right: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .contact-secondary {
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+      background-image: url("images/bg.jpg");
+      background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+  color: white;
+    }
+
+    .stats div h2 {
+      font-size: 32px;
+      color: white;
+      background-image: "images/bg.jpg";
+    }
+
+    .scroll-down-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+
+    .scroll-down-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(30, 144, 255, 0.4));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    .chevrons {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .chevron {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid white;
+      animation: chevronMove 2s infinite ease-in-out;
+    }
+
+    .chevron:nth-child(2) { opacity: 0.6; animation-delay: 0.2s; }
+    .chevron:nth-child(3) { opacity: 0.3; animation-delay: 0.4s; }
+
+    .scroll-label {
+      margin-top: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @keyframes chevronMove {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .content-section {
+      padding: 60px 100px;
+      background-color: #020a25;
+      text-align: center;
+    }
+
+    .highlight { color: #00aaff; }
+
+    .business-metrics {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .business-metrics h2 {
+      font-size: 36px;
+      color: white;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 900px;
+      margin: 0 auto 20px;
+    }
+
+    /* Services Section */
+    .services-section {
+      background: #fff;
+      color: #000;
+      padding: 60px 20px;
+    }
+
+    .services-section h1 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .services-section .highlight {
+      color: #007bff;
+    }
+
+    .grid-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service img {
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    .service h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .service p {
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      background: linear-gradient(to right, #007bff, #d0e8ff);
+      border-radius: 12px;
+      padding: 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .cta h2 {
+      font-size: 1.2rem;
+      font-weight: bolder;
+      line-height: 1.7;
+    }
+
+    .cta h2 strong { color: black; }
+    .cta h2 span { font-weight: bolder; }
+
+    .cta button {
+      background: #fff;
+      color: black;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      cursor: pointer;
+      width: fit-content;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s;
+    }
+
+    .cta button:hover { background: #e0e0e0; }
+
+    /* Benefits Section */
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #fff;
+      color: #222;
+    }
+
+    .benefits-heading {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bolder;
+      margin-bottom: 30px;
+    }
+
+    .benefits-highlight {
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 30px;
+      overflow-x: auto;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #555;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      color: #000;
+      border-color: #007bff;
+      font-weight: bold;
+    }
+
+    .benefits-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .benefits-text {
+      flex: 1 1 50%;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .benefits-text p {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .benefits-image {
+      flex: 1 1 45%;
+      text-align: center;
+    }
+
+    .benefits-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    /* Pipeline Section */
+    .pipeline-section {
+      padding: 60px 20px;
+      background-color: #f8f9fa;
+      color: #1a1a1a;
+      text-align: center;
+    }
+
+    .pipeline-section h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .pipeline-section h1 span {
+      color: #0070f3;
+    }
+
+    .pipeline-subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .pipeline-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .pipeline-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Step by Step Section */
+    .step-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      padding: 60px 40px;
+      background-color: #fff;
+      color: #1a1a1a;
+    }
+
+    .left-content {
+      flex: 1 1 50%;
+      min-width: 300px;
+    }
+
+    .left-content h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .left-content .step-number {
+      font-size: 5rem;
+      font-weight: bold;
+      color: #007bff;
+      background: linear-gradient(to bottom, #007bff, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .analysis {
+      border-left: 3px solid #007bff;
+      padding-left: 10px;
+      margin: 20px 0;
+    }
+
+    .analysis h3 {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .analysis p {
+      margin-top: 10px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .right-content {
+      flex: 1 1 40%;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .right-content p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .step-contact-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .step-contact-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .image-box {
+      margin-top: 30px;
+    }
+
+    .image-box img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Features Grid Section */
+    .features-container {
+      max-width: 1300px;
+      margin: auto;
+      padding: 60px 20px;
+      background: #eaf3ff;
+      color: #1a1a1a;
+    }
+
+    .features-heading {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .features-heading h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .features-heading p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "card1 card4 card2"
+        "card3 .     card5";
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-card img.icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .feature-card img.photo {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #444;
+      margin: 0;
+    }
+
+    .card1 { grid-area: card1; }
+    .card2 { grid-area: card2; }
+    .card3 { grid-area: card3; }
+    .card4 { grid-area: card4; }
+    .card5 { grid-area: card5; }
+
+    /* Kubernetes Section */
+    .kubernetes-section {
+      background: #ffffff;
+      padding: 60px 20px;
+    }
+
+    .kube-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .kube-text {
+      flex: 1 1 500px;
+      padding-right: 40px;
+    }
+
+    .kube-text h2 {
+      font-size: 2.2rem;
+      background: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .kube-text h3 {
+      font-size: 2rem;
+      color: #000;
+      margin: 0 0 20px 0;
+    }
+
+    .kube-text p {
+      color: #333;
+      line-height: 1.6;
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+
+    .kube-text .btn {
+      background: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .kube-text .btn:hover {
+      background: #005ec2;
+    }
+
+    .kube-image-container {
+      flex: 1 1 400px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .kube-image {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Diverse Industries */
+    .industry-container {
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      padding: 40px 20px;
+      color: white;
+    }
+
+    .industry-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .industry-container p {
+      color: #ccc;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto auto;
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .industry-item {
+      background: linear-gradient(145deg, #111426, #0b0e1c);
+      padding: 20px;
+      width: 160px;
+      height: 100px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .industry-item:hover {
+      border-color: #287bff;
+      transform: translateY(-4px);
+    }
+
+    .industry-item img {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 10px;
+    }
+
+    .industry-item span {
+      font-size: 0.95rem;
+    }
+
+    .industry-grid .center {
+      grid-column: 2 / span 2;
+    }
+
+    /* Solutions Section */
+    .solutions-section {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 40px 20px;
+      color: white;
+    }
+
+    .solutions-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .solutions-section p {
+      color: #ccc;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .solution-cards {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .solution-card {
+      flex: 1;
+      min-width: 260px;
+      background: linear-gradient(145deg, #111426, #0b0e1c);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .solution-card img {
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    .solution-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .solution-card p {
+      font-size: 0.95rem;
+      text-align: left;
+      color: #ccc;
+    }
+
+    /* Tools Section */
+    .tools-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+      padding: 40px 20px;
+      color: white;
+    }
+
+    .tools-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .tools-text h2 {
+      font-size: 1.8rem;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    .tools-text p {
+      text-align: left;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .tools-list {
+      border-top: 1px solid #444;
+      padding-top: 10px;
+    }
+
+    .tools-list li {
+      list-style: none;
+      margin: 12px 0;
+      font-size: 1rem;
+      text-decoration: underline;
+    }
+
+    .tools-icons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, auto);
+      gap: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tool-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .tool-icon:hover {
+      transform: translateY(-5px);
+      border-color: #00bfff;
+    }
+
+    .tool-icon img {
+      margin-bottom: 4px;
+      max-width: 60%;
+      max-height: 60%;
+    }
+
+    .tool-icon span {
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Trusted Section */
+    .trusted-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .trusted-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 100%;
+      overflow: hidden;
+      padding: 0 10px;
+    }
+
+    .logo-column img {
+      width: 350px;
+      height: 750px;
+      object-fit: contain;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      background: none;
+    }
+
+    .center-content {
+      max-width: 600px;
+      text-align: center;
+      padding: 0 30px;
+    }
+
+    .center-content img.brand-logo {
+      width: 80px;
+      margin-bottom: 20px;
+      border: none;
+      box-shadow: none;
+      background: none;
+    }
+
+    .center-content h2 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .center-content p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    .center-content .cta-button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .center-content .cta-button:hover {
+      background-color: #005ecc;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 40px 20px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .testimonials-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .testimonials-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: black;
+      margin-bottom: 40px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background-color: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .testimonial-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-card.large img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .testimonial-card.horizontal {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .testimonial-card.horizontal img {
+      width: 160px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .testimonial-card.horizontal .card-content {
+      flex: 1;
+    }
+
+    .stars {
+      color: #C0C0C0;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bolder;
+    }
+
+    .testimonial-name {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Contact Form Section */
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 100vh;
+      background: #fff;
+      color: #000;
+    }
+
+    .contact-left, .contact-right {
+      flex: 1;
+      min-width: 300px;
+      padding: 40px;
+    }
+
+    .contact-left {
+      background: #fff;
+    }
+
+    .contact-right {
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .contact-left h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .contact-highlight {
+      color: #0066ff;
+      background-color: #dbeaff;
+      padding: 4px 10px;
+      border-radius: 10px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .form-control {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .form-control input, .form-control textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .form-control label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-group input {
+      margin-right: 5px;
+    }
+
+    .message-box {
+      margin-bottom: 20px;
+    }
+
+    .submit-btn {
+      background-color: #0066ff;
+      color: #fff;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      background-color: #0052cc;
+    }
+
+    .contact-right-top {
+      padding: 40px;
+      background-color: #000;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .contact-steps {
+      flex: 2;
+    }
+
+    .contact-step {
+      margin-bottom: 25px;
+    }
+
+    .contact-step-number {
+      color: #0066ff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .contact-step-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 4px 0;
+    }
+
+    .contact-step-desc {
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .quote-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: 30px;
+    }
+
+    .quote-text {
+      color: #0066ff;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .contact-right-bottom {
+      background: #fff;
+      color: #000;
+      padding: 30px 40px;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #ccc;
+    }
+
+    .contact-info-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .contact-info-box {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px;
+    }
+
+    .contact-info-box strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .contact-info-box p {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .contact-social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .contact-social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #03172b;
+      color: #ffffff;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 20px;
+    }
+
+    .footer-top h2 {
+      margin: 0;
+    }
+
+    .footer-contact-info p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      border-top: 1px solid #1f2e3d;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+
+    .footer-col {
+      flex: 1 1 200px;
+      margin: 10px;
+    }
+
+    .footer-col h4 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #4cb8ff;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .footer-social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 13px;
+      color: #ccc;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .country-links {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .country-links span {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "card1"
+          "card4"
+          "card2"
+          "card3"
+          "card5";
+      }
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { 
+        flex-direction: column; 
+        gap: 15px; 
+        padding: 20px;
+      }
+      .stats, 
+      .business-metrics, 
+      .grid-row { 
+        flex-direction: column; 
+        gap: 30px; 
+      }
+      .content-section { 
+        padding: 40px 20px; 
+      }
+      .cta { 
+        align-items: center; 
+        text-align: center; 
+      }
+      .benefits-content {
+        flex-direction: column;
+      }
+      .tabs {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .tab {
+        padding: 10px 12px;
+      }
+      .pipeline-section h1 {
+        font-size: 24px;
+      }
+      .pipeline-subtitle {
+        font-size: 14px;
+      }
+      .step-section {
+        flex-direction: column;
+      }
+      .left-content h1 {
+        font-size: 2rem;
+      }
+      .left-content .step-number {
+        font-size: 4rem;
+      }
+      .industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .industry-grid .center {
+        grid-column: auto;
+      }
+      .solution-cards {
+        flex-direction: column;
+      }
+      .tools-section {
+        flex-direction: column;
+      }
+      .trusted-layout {
+        flex-direction: column;
+      }
+      .logo-column img {
+        max-width: 100%;
+        height: auto;
+      }
+      .contact-section {
+        flex-direction: column;
+      }
+      .contact-right-top {
+        flex-direction: column;
+      }
+      .quote-block {
+        margin-left: 0;
+        margin-top: 30px;
+      }
+      .contact-info-grid {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 600px) {
+  .footer-note {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-note .left,
+  .footer-note .right {
+    margin: 5px 0;
+  }
+}
+
+    /* CSS */
+.stats-background {
+  background-image: url('0f749ad2-6ad7-4fd0-9646-daf259bbb331.png'); /* Use correct path if different */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+  color: white; /* Makes text readable */
+}
+.footer-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* optional spacing */
+  font-size: 14px;
+  flex-wrap: wrap; /* optional: helps with responsiveness */
+}
+
+.footer-note .left {
+  text-align: left;
+}
+
+.footer-note .right {
+  text-align: right;
+}
+
+.logo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  background-color: transparent;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+  <img src="images/team.jpg" alt="Team Tweaks Logo" width="243" height="51">
+</div>
+
+      <ul class="nav-links">
+        <li>Home</li>
+        <li>Services</li>
+        <li>Products</li>
+        <li>Blog</li>
+        <li>Case Studies</li>
+      </ul>
+      <button class="contact-btn">Contact us</button>
+    </nav>
+
+    <div class="hero-section">
+      <p style="font-weight: bolder; font-size: xx-large;">DevOps Consulting Optimum <br>accessible solution</p>
+      <p>Our DevOps consulting services accelerate your journey in this competitive world. The implemented & tested products should possess 100% quality which is the most vital factor for an entrepreneur’s success.</p>
+      <div class="cta-buttons">
+        <button class="quote-btn">Get a Quote</button>
+        <button class="contact-secondary">Contact us</button>
+      </div>
+      <br>
+      <h4 class="section-subtitle">OUR GLOBAL FOOTPRINT OF SUCCESS</h4>
+      
+
+      <div class="stats-background">
+  <div class="stats">
+    <div><h2>500+</h2><p>Clients Worldwide</p></div>
+    <div><h2>99%</h2><p>Quality Assurance</p></div>
+    <div><h2>200+</h2><p>Dedicated Professionals</p></div>
+    <div><h2>15+</h2><p>Years Experience</p></div>
+  </div>
+
+  <div class="scroll-down-container" onclick="scrollToSection('services')">
+    <div class="scroll-down-btn">
+      <div class="chevrons">
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+      </div>
+    </div>
+    <div class="scroll-label">SCROLL DOWN</div>
+  </div>
+</div>
+    </div>
+  </header>
+
+  <main id="services" class="content-section">
+    <h1>Strategical <span class="highlight">DevOps Consulting</span> services</h1>
+    <p style="text-align: justify;">Our experienced team provides the best DevOps consulting services that help the end-users enhance the project and adopt top-notch practices in the entire process.
+Imagine if you are running a successful web development company providing top-notch web solutions. At a point, if the entire team does not meet the destination point in producing new features and fails to work on the issues, automatically it results in poor production. Then for sure, you will lose your customers & reputation too. 
+The above-mentioned crucial situations are pretended to occur in the pre-DevOps archetype. Due to the lagging of collaboration factors, failure occurs in the optimal production output. 
+Our experienced DevOps engineers support you in every phase of the DevOps process. We are 100% responsible for your organization’s growth and provide scalable solutions for any sort of complicated issues. Our best practice of standard DevOps culture guides you in the differential fields of production rates, optimized management, adopted frequency, etc. </p>
+    <p>The Numbers that helps you reach your business goals faster</p>
+
+    <div class="business-metrics">
+      <div><h2>50%</h2><p>Faster go to Market Timeline</p></div>
+      <div><h2>40%</h2><p>Reduction in Risks</p></div>
+      <div><h2>60%</h2><p>Higher Business Agility</p></div>
+    </div>
+  </main>
+
+  <section class="services-section">
+    <h1>Services Offered By <span class="highlight">DevOps <br>Consulting</span> services</h1>
+
+    <div class="grid-row">
+      <div class="service">
+        <img src="images/icon.jpg" alt="icon" />
+        <h3>DevOps Consulting</h3>
+        <p>Leverage DevOps Consulting in India and consult our proficient developers for a tailored approach including a detailed DevOps assessment, strategic guidance, automation & implementation</p>
+      </div>
+      <div class="service">
+        <img src="images/icon.jpg" alt="icon" />
+        <h3>Configuration Management</h3>
+        <p>We assist in you establishing robust configuration management practices using extensive tools to ensure scalability in managing your lean operations</p>
+      </div>
+      <div class="service">
+        <img src="images/icon.jpg" alt="icon" />
+        <h3>DevOps CI/CD</h3>
+        <p>From implementing to optimizing CI/CD pipelines, automating build, testing, and deployment processes we ensure faster & reliable releases to bring your software to market with confidence.</p>
+      </div>
+      <div class="service">
+        <img src="images/icon.jpg" alt="icon" />
+        <h3>Containerization</h3>
+        <p>We guide you in adopting containerization technologies such as Docker and Kubernetes. By leveraging containerization, you can achieve application portability and efficient resource utilization.</p>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="service">
+        <img src="images/icon.jpg" alt="icon" />
+        <h3>Monitoring and Logging</h3>
+        <p>Our experts implement robust monitoring and logging solutions, providing real-time visibility and enabling your system for proactive issue detection, performance optimization, and effective troubleshooting.</p>
+      </div>
+      <div class="service">
+        <img src="images/icon.jpg" alt="icon" />
+        <h3>Infrastructure Automation</h3>
+        <p>Our IT and software infrastructure
+automation services assist businesses in
+accelerating their IT operations to reach
+the pinnacle of success with highly
+automated IT and software development
+operations.
+
+</p>
+      </div>
+      <div class="cta">
+        <h2>
+          Get <strong>your project</strong> <span>evaluation</span><br/>
+          done right now!!
+        </h2>
+        <button onclick="getQuote()">Get a Quote →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits-container">
+    <div class="benefits-heading">
+      Enlisted below are the underlying benefits<br />
+      of <span class="benefits-highlight">'Team Tweaks'</span> DevOps services.
+    </div>
+
+    <div class="tabs" id="tabs">
+      <div class="tab active">Continuous Delivery and <br>Continuous Integration</div>
+      <div class="tab">Infrastructure as Code</div>
+      <div class="tab">Configuration Management</div>
+      <div class="tab">Continuous Testing</div>
+      <div class="tab">Continuous Monitoring</div>
+    </div>
+
+    <div class="benefits-content" id="tab-content">
+      <div class="benefits-text">
+        <p>
+          From our point of view, both Continuous Delivery and Continuous Integration is the most important factor.
+          Our DevOps engineers are 100% concerned about detailed analysis, testing & delivering products.
+          We always make use of the advanced DevOps automated tools.
+        </p>
+        <p>
+          At the peak level, we pursue the streamlined process typically known to be the continuous delivery pipeline.
+          It gets started when expertise develops the coding process & transmits it to the source repository.
+          This is the apt point where continuous integration occupies the lead portion.
+          It also makes a confirmation that code is selected by the set of developers which is ultimately integrated into a customary repertory.
+          Here, both the CI & CD forms the base of the persistent DevOps culture of the most flourishing firm.
+        </p>
+        <p>
+          You can feel free to contact us, Team Tweaks placing as the relevant service provider,
+          we help you to increase the quality of your product at the estimated time.
+          We work on the with CI and CD, reduce the errors and focus on the high-quality codes that are triggered to be deployed whenever it is necessary.
+          Our exclusive team makes use of the agile methodology to achieve long-term business requirements.
+          100% security is guaranteed as we follow the automation process in the deployment stage.
+        </p>
+      </div>
+      <div class="benefits-image">
+        <img src="images/image.png" alt="CI/CD Process Image" />
+      </div>
+    </div>
+  </section>
+
+  <section class="pipeline-section">
+    <h1>Ensure a continuous business delivery<br>with a <span>DevOps pipeline</span>.</h1>
+    <p class="pipeline-subtitle">DevOps solutions break down the barriers between development and operational services.</p>
+
+    <div class="pipeline-image">
+      <img src="images/image copy.png" alt="DevOps Pipeline Diagram">
+    </div>
+  </section>
+
+  <section class="step-section">
+    <div class="left-content">
+      <h1>Step by Step DevOps<br>Implementation Process</h1>
+      <div class="step-number">01</div>
+      <div class="analysis">
+        <h3>A In depth Analysis</h3>
+        <p>
+          The development steps are carefully planned to face DevOps challenges.
+          Our intended containerization methodology promotes 100% portability and splits up function steps uniformly
+          spanning over the environment. By implementing Continuous Delivery and Continuous Integration, you can be
+          benefitted from the utmost DevOps. To produce an efficient result, we make use of automated tools like
+          Zabbix, Nagios & ELx, etc.
+        </p>
+      </div>
+    </div>
+
+    <div class="right-content">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
+        Lorem Ipsum has been the industry's.
+      </p>
+      <button class="step-contact-btn" onclick="contactUs()">Contact us now! →</button>
+      <div class="image-box">
+        <img src="images/image1.jpg" alt="DevOps Analysis">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid Section -->
+  <div class="features-container">
+    <div class="features-heading">
+      <h1>Surplus features and options</h1>
+      <p>DevOps solutions break down the barriers between development and operational services.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card card1" style="height: 200px;">
+        <img src="https://img.icons8.com/ios-filled/50/settings.png" class="icon" alt="icon">
+        <h3>Impeccable Incorporation</h3>
+        <p>All you need to do is fill in the repository details and relax. DevOps will take care of the rest; incorporation from testing to deployment will take place without any flaws.</p>
+      </div>
+
+      <div class="feature-card card4">
+        <img src="images/meeting.jpg" class="photo" alt="meeting image">
+        <h3>Mechanized Test Reports</h3>
+        <p>Analyze the abilities of your employees via automated assessments. Unleash their caliper with detailed test reports of each individual.</p>
+      </div>
+
+      <div class="feature-card card2" style="height: 200px;">
+        <img src="https://img.icons8.com/ios-filled/50/group-foreground-selected.png" class="icon" alt="icon">
+        <h3>Quicker On-boarding</h3>
+        <p>On-boarding will take place in no time with the systemized approach designed with DevOps.</p>
+      </div>
+
+      <div class="feature-card card3" style="height: 200px;">
+        <img src="https://img.icons8.com/ios-filled/50/visible.png" class="icon" alt="icon">
+        <h3>Enhanced transparency</h3>
+        <p>You can get better in-depth insights of all the work happening around you at ease. Better visibility of the workflow is assured with more DevOps design.</p>
+      </div>
+
+      <div class="feature-card card5" style="height: 200px;">
+        <img src="https://img.icons8.com/ios-filled/50/money.png" class="icon" alt="icon">
+        <h3>Value for money</h3>
+        <p>Save your money invested over individual tools. Cover all under a roof with a cost-effective solution.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kubernetes Section -->
+  <div class="kubernetes-section">
+    <div class="kube-wrapper">
+      <div class="kube-text">
+        <h2>Kubernetes</h2>
+        <h3>Consulting</h3>
+        <p>If you are thinking of using Kubernetes as well but find it difficult to deploy it then a well trained and experienced team of Tweaks DevOps engineers can help you in this regard. We can help you with complete deployment of Kubernetes including container orchestration without having to worry about the stage you are in. It could be implementation and understanding of containerized application concepts or even automating existing pipelines on the Kubernetes platform, we are here for you. Team Tweaks DevOps engineer will guide your every step of the way so you can become a Kubernetes expert yourself.</p>
+        <a href="#" class="btn">View More →</a>
+      </div>
+      <div class="kube-image-container">
+        <img src="images/kuber.jpg" class="kube-image" alt="Kubernetes logo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Diverse Industries -->
+  <section class="industry-container">
+    <h2>Diverse Industries</h2>
+    <p>DevOps solutions break down the barriers between development and operational services.</p>
+    <div class="industry-grid">
+      <div class="industry-item center">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/delivery.png" alt="Logistics" />
+        <span>Logistics</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/heart-health.png" alt="Health Care" />
+        <span>Health Care</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/money.png" alt="FinTech" />
+        <span>FinTech</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/city-hall.png" alt="Government" />
+        <span>Government</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/graduation-cap.png" alt="Education" />
+        <span>Education</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ultraviolet/40/law.png" alt="On-demand" />
+        <span>On-demand</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Ecommerce" />
+        <span>Ecommerce</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/restaurant.png" alt="Restaurant" />
+        <span>Restaurant</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/airport.png" alt="Aviation" />
+        <span>Aviation</span>
+      </div>
+      <div class="industry-item">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/plant-under-sun.png" alt="Agriculture" />
+        <span>Agriculture</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stand-alone DevOps Solutions -->
+  <section class="solutions-section">
+    <h2>Stand-alone DevOps solution</h2>
+    <div class="solution-cards">
+      <div class="solution-card">
+        <img src="images/image2.jpg" alt="icon" />
+        <h3>Precise CI/CD</h3>
+        <p>Designing an automated DevOps for your organization will no more be a burden with our assistance. Reduce feedback loops; create and deploy within a short span of time.</p>
+      </div>
+      <div class="solution-card">
+        <img src="images/image3.jpg" alt="icon" />
+        <h3>Test Automata</h3>
+        <p>Find the ideal talent hidden within your organization with computerized test reports. Maximize performance and compete with confidence by unlocking developer potential.</p>
+      </div>
+      <div class="solution-card">
+        <img src="images/image4.jpg" alt="icon" />
+        <h3>Prompt Intimations</h3>
+        <p>Get notified upon completion of every module. Gain visibility into changes at every step and keep your team alert and informed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DevOps Tools -->
+  <section class="tools-section">
+    <div class="tools-text">
+      <h2>DevOps Tools - Measure Your Delivery Process & Automate</h2>
+      <p>Introducing the most popular on-premise & cloud DevOps tools. Continuous delivery for Enterprises.</p>
+      <div class="tools-list">
+        <ul>
+          <li>Code Management</li>
+          <li>Build</li>
+          <li>Micro Services</li>
+          <li>Continuous Testing</li>
+          <li>Security Testing</li>
+          <li>Configuration Management</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tools-icons">
+      <div class="tool-icon" style="grid-column: 1; grid-row: 1;">
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/github.png" alt="GitHub" />
+        <span>GitHub</span>
+      </div>
+      <div class="tool-icon" style="grid-column: 2; grid-row: 2;">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/git.png" alt="Git" />
+        <span>Git</span>
+      </div>
+      <div class="tool-icon" style="grid-column: 1; grid-row: 2;">
+        <img src="https://img.icons8.com/color/48/jenkins.png" alt="Jenkins" />
+        <span>Jenkins</span>
+      </div>
+      <div class="tool-icon" style="grid-column: 3; grid-row: 2;">
+        <img src="https://img.icons8.com/fluency/48/selenium-test-automation.png" alt="Selenium" />
+        <span>Selenium</span>
+      </div>
+      <div class="tool-icon" style="grid-column: 2; grid-row: 3;">
+        <img src="https://img.icons8.com/forma-thin/24/rainbow.png" alt="SonarQube" />
+        <span>SonarQube</span>
+      </div>
+      <div class="tool-icon" style="grid-column: 1; grid-row: 3;">
+        <img src="https://img.icons8.com/external-tal-revivo-filled-tal-revivo/24/external-bitbucket-is-a-web-based-version-control-repository-hosting-service-logo-filled-tal-revivo.png" alt="Bitbucket" />
+        <span>Bitbucket</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted Section -->
+  <section class="trusted-section">
+    <div class="trusted-layout">
+      <div class="logo-column">
+        <img src="logos/left.jpg" alt="Client logos" />
+      </div>
+      <div class="center-content">
+        <img src="logos/logo.jpg" class="brand-logo" alt="TT Logo" />
+        <h2>Trusted by Industry Leaders</h2>
+        <p>We're proud to serve businesses across various sectors including fintech, healthcare, retail, and more</p>
+        <a href="#" class="cta-button">🔓 Unlock Your Potential</a>
+      </div>
+      <div class="logo-column">
+        <img src="logos/right.jpg" alt="Client logos" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <h2>Real Results, Real Feedback</h2>
+    <p class="testimonials-subtitle">"Our clients' words reflect the quality of our work and our <br>commitment to their success."</p>
+
+    <div class="testimonials-grid">
+      <!-- Column 1 -->
+      <div class="testimonial-card large">
+        <img src="logos/image.png" alt="Istiak Ahmed">
+        <div class="testimonial-text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</div>
+        <div class="testimonial-name">Istiak Ahmed</div>
+        <div class="testimonial-role">CEO, Avito</div>
+        <div class="stars">★★★★★</div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="testimonial-card horizontal">
+        <img src="logos/man.jpg" alt="Rahul Deb">
+        <div class="card-content">
+          <div class="testimonial-text">
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+            Velit officia consequat duis enim velit mollit.
+          </div>
+          <div class="testimonial-name">Rahul Deb</div>
+          <div class="testimonial-role">CEO, Avito</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="testimonial-card">
+        <img src="logos/logo1.jpg" alt="Mambwe Musungaila">
+        <div class="testimonial-name">Mambwe Musungaila</div>
+        <div class="testimonial-role">Senior Tax Appeals Officer at Zambia Revenue Authority</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"An awesome guy Kapil is. Little wonder why TeamTweaks is the perfect partner for any tech start-up. They're really passionate about their work and very helpful. Been such a privilege working with them."</div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="testimonial-card">
+        <img src="logos/logo4.jpg" alt="Ramy El-Batrawi">
+        <div class="testimonial-name">Ramy El-Batrawi</div>
+        <div class="testimonial-role">Owner, X, LLC</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"TeamTweaks Technology that Kapildev owns and runs is in my opinion one of the best companies I have ever worked with for developing websites that are complicated and the apps that go along with it."</div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="logos/logo2.jpg" alt="Keith A. Paul">
+        <div class="testimonial-name">Keith A. Paul</div>
+        <div class="testimonial-role">Founding Member HandyPro International LLC</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Kapildev G and his team are wonderful to work with. He and his team have exceptional expertise in software development and problem-solving skills. We have the pleasure of working with his team for the past year and a half."</div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="logos/logo3.jpg" alt="Christopher A Whitfield">
+        <div class="testimonial-name">Christopher A Whitfield</div>
+        <div class="testimonial-role">Owner of Best Edge SEO and Best Edge Medical Marketing</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"I have had the pleasure of working with Kapil on multiple projects. He has always been extremely knowledgeable and has added great value to my business."</div>
+      </div>
+
+      <!-- Center card in row 3 -->
+      <div></div>
+      <div class="testimonial-card">
+        <img src="logos/logo5.jpg" alt="Harish Ramechandani">
+        <div class="testimonial-name">Harish Ramechandani</div>
+        <div class="testimonial-role">Stealth Mode Startup Company</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"I've had the pleasure of doing business with Kapildev and his team in India. Kapildev's 'client first' attitude combined with incredible leadership skills has resulted in high customer satisfaction and repeat business."</div>
+      </div>
+      <div></div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-section">
+    <div class="contact-left">
+      <h1>Your Next <span class="contact-highlight">Big</span><br>Move <span class="contact-highlight">Starts</span> Here!</h1>
+      <form>
+        <div class="form-group">
+          <div class="form-control">
+            <label>Name</label>
+            <input type="text" placeholder="Your Name" />
+          </div>
+          <div class="form-control">
+            <label>Your Email</label>
+            <input type="email" placeholder="you@example.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-control">
+            <label><img src="https://flagcdn.com/w40/in.png" alt="IN" style="width:20px; vertical-align:middle;"> +91 Your Mobile Number</label>
+            <input type="text" placeholder="1234567890" />
+          </div>
+          <div class="form-control">
+            <label>Skype ID</label>
+            <input type="text" placeholder="your.skype.id" />
+          </div>
+        </div>
+        <label>Where did you find</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" checked /> Google</label>
+          <label><input type="checkbox" /> Social Media</label>
+          <label><input type="checkbox" /> Friends</label>
+          <label><input type="checkbox" /> Referral</label>
+          <label><input type="checkbox" /> Others</label>
+        </div>
+        <div class="message-box">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Your message..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">✈️ Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-right-top">
+        <div class="contact-steps">
+          <div class="contact-step">
+            <div class="contact-step-number">01</div>
+            <div class="contact-step-title">Tell us about your project</div>
+            <div class="contact-step-desc">Let us know everything you want to achieve!</div>
+          </div>
+          <div class="contact-step">
+            <div class="contact-step-number">02</div>
+            <div class="contact-step-title">We'll set up an informal chat</div>
+            <div class="contact-step-desc">A quick, no-pressure call to understand your needs.</div>
+          </div>
+          <div class="contact-step">
+            <div class="contact-step-number">03</div>
+            <div class="contact-step-title">Receive a competitive quote</div>
+            <div class="contact-step-desc">Enjoy transparent pricing with potential discounts!</div>
+          </div>
+        </div>
+        <div class="quote-block">
+          <div class="quote-text">
+            WE<br>KEEP<br>THINGS<br>SIMPLE
+          </div>
+        </div>
+      </div>
+      <div class="contact-right-bottom">
+        <div class="contact-info-grid">
+          <div class="contact-info-box">
+            <strong>SALES</strong>
+            <p>+91 98947 95169 | +91 9894760051</p>
+          </div>
+          <div class="contact-info-box">
+            <strong>CAREERS</strong>
+            <p>+91 91763 31128</p>
+          </div>
+          <div class="contact-info-box">
+            <strong>EMAIL</strong>
+            <p>contact@teamtweaks.com</p>
+          </div>
+          <div class="contact-info-box">
+            <strong>VISIT</strong>
+            <p>ASK Towers, Plot No.183, Sri Sai Nagar 3rd Main Road, Okkkiyam Thoraipakkam Chennai - 600097.</p>
+          </div>
+        </div>
+
+        <div class="contact-social-icons">
+          <a href="#"><img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/pinterest.png" alt="Pinterest"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook"/></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <h2>INDIA</h2>
+      <div class="footer-contact-info">
+        <p>ASK Towers, Plot No.183, Sri Sai Nagar 3rd Main</p>
+        <p>Road, Okkiyam Thoraipakkam Chennai - 600097.</p>
+        <p>SALES : +91 98947 95169 | +91 90947 60051</p>
+        <p>JOBS : +91 91763 31128</p>
+        <p>Email: <a href="mailto:contact@teamtweaks.com">contact@teamtweaks.com</a></p>
+      </div>
+      <div class="country-links">
+        <span>UK</span><span>USA</span><span>UAE</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Internet Of Things</h4>
+        <ul>
+          <li><a href="#">Internet Of Things</a></li>
+          <li><a href="#">Smart Water Management</a></li>
+          <li><a href="#">Asset Tracking System</a></li>
+          <li><a href="#">Industrial IoT</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#">Taxi Dispatch Software</a></li>
+          <li><a href="#">On Demand App Development</a></li>
+          <li><a href="#">Grocery App Development</a></li>
+          <li><a href="#">Food Delivery App Development</a></li>
+          <li><a href="#">Ecommerce App Development</a></li>
+          <li><a href="#">Custom Software Development</a></li>
+          <li><a href="#">Logistics Management Software</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">DevOps As A Service</a></li>
+          <li><a href="#">Blockchain Development</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Wordpress Development</a></li>
+          <li><a href="#">iOS App Development</a></li>
+          <li><a href="#">Cloud Computing</a></li>
+          <li><a href="#">Link Building Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#">Android App Development</a></li>
+          <li><a href="#">Android App Development Agency</a></li>
+          <li><a href="#">Mobile App Development</a></li>
+          <li><a href="#">React Native App Development</a></li>
+          <li><a href="#">Flutter App Development</a></li>
+          <li><a href="#">Progressive Web App Development</a></li>
+          <li><a href="#">SEO Agency In Dubai</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-social-icons">
+      <a href="#"><img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/pinterest.png" alt="Pinterest"/></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook"/></a>
+      <a href="#">
+  <img src="images/iso.jpg" alt="ISO Certified" width="200" height="100"/>
+</a>
+
+    </div>
+
+    <div class="footer-note">
+  <span class="left">© Team Tweaks / Mobile App Development Company in Chennai, India All Rights Reserved</span>
+  <span class="right">© 2000-2023, All Rights Reserved</span>
+</div>
+
+  </footer>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function getQuote() {
+      alert("Redirecting to quote form...");
+    }
+
+    function contactUs() {
+      alert("Redirecting to contact form...");
+    }
+
+    // Tab click interaction
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Scroll reveal animation for logos
+    const logos = document.querySelectorAll('.logo-column img');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transform = 'scale(1)';
+          entry.target.style.opacity = '1';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    logos.forEach(img => {
+      img.style.transform = 'scale(0.8)';
+      img.style.opacity = '0';
+      img.style.transition = 'all 0.6s ease';
+      observer.observe(img);
+    });
+  </script>
+
+</body>
+</html>
